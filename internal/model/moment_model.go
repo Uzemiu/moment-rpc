@@ -20,7 +20,7 @@ type (
 	// and implement the added methods in customMomentModel.
 	MomentModel interface {
 		momentModel
-		QueryMoment(ctx context.Context, query *pb.QueryMomentReq) ([]*pb.Moment, error)
+		QueryMoment(ctx context.Context, query *pb.QueryMomentReq) ([]*Moment, error)
 		// UpdateMomentByIdAndUserId 根据id和userId更新动态（id, userId包含在Req内）
 		UpdateMomentByIdAndUserId(ctx context.Context, req *pb.UpdateMomentReq) error
 		// DeleteMomentByIdAndUserId 根据id和userId删除动态
@@ -40,8 +40,8 @@ func NewMomentModel(url, db, collection string, c cache.CacheConf) MomentModel {
 	}
 }
 
-func (m *customMomentModel) QueryMoment(ctx context.Context, query *pb.QueryMomentReq) ([]*pb.Moment, error) {
-	var resp []*pb.Moment
+func (m *customMomentModel) QueryMoment(ctx context.Context, query *pb.QueryMomentReq) ([]*Moment, error) {
+	var resp []*Moment
 
 	option := options.FindOptions{}
 	if query.Size <= 0 {
@@ -92,7 +92,10 @@ func (m *customMomentModel) UpdateMomentByIdAndUserId(ctx context.Context, data 
 		},
 	}
 
-	_, err = m.conn.UpdateOne(ctx, key, filter, update)
+	option := options.UpdateOptions{}
+	option.SetUpsert(false)
+
+	_, err = m.conn.UpdateOne(ctx, key, filter, update, &option)
 	return err
 }
 

@@ -27,9 +27,12 @@ func NewInsertMomentLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Inse
 
 func (l *InsertMomentLogic) InsertMoment(in *pb.InsertMomentReq) (resp *pb.InsertMomentResp, err error) {
 	// 类型转换
-	catId, err := primitive.ObjectIDFromHex(in.CatId)
-	if err != nil {
-		return nil, model.ErrInvalidObjectId
+	catId := primitive.ObjectID{}
+	if in.CatId != "" {
+		catId, err = primitive.ObjectIDFromHex(in.CatId)
+		if err != nil {
+			return nil, err
+		}
 	}
 	userId, err := primitive.ObjectIDFromHex(in.UserId)
 	if err != nil {

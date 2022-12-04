@@ -11,7 +11,8 @@ message Moment {
   string text = 4;
   repeated string imageUrls = 5;
   string userId = 6;
-  int64 createdAt = 7;
+  int64 createAt = 7;
+  int32 likes = 8;
 }
 
 message GetMomentReq {

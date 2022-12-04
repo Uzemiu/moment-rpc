@@ -38,7 +38,7 @@ func (l *GetMomentLogic) GetMoment(in *pb.GetMomentReq) (*pb.GetMomentResp, erro
 			Text:      res.Text,
 			ImageUrls: res.Photos,
 			UserId:    res.UserId.Hex(),
-			CreatedAt: res.CreateAt.UnixMilli(),
+			CreateAt:  res.CreateAt.UnixMilli(),
 		},
 	}, nil
 }

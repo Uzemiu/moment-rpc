@@ -46,7 +46,7 @@ func (m *defaultMomentModel) FindOne(ctx context.Context, id string) (*Moment, e
 	}
 
 	var data Moment
-	key := prefixMomentCacheKey + data.ID.Hex()
+	key := prefixMomentCacheKey + id
 	err = m.conn.FindOne(ctx, key, &data, bson.M{"_id": oid})
 	switch err {
 	case nil:

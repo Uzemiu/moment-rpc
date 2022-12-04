@@ -30,7 +30,21 @@ func (l *QueryMomentLogic) QueryMoment(in *pb.QueryMomentReq) (*pb.QueryMomentRe
 		return nil, err
 	}
 
+	var respMoments []*pb.Moment
+	for _, moment := range moments {
+		respMoments = append(respMoments, &pb.Moment{
+			Id:        moment.ID.Hex(),
+			Title:     moment.Title,
+			CatId:     moment.CatId.Hex(),
+			Text:      moment.Text,
+			ImageUrls: moment.Photos,
+			UserId:    moment.UserId.Hex(),
+			Likes:     int32(len(moment.UserLikes)),
+			CreateAt:  moment.CreateAt.UnixMilli(),
+		})
+	}
+
 	return &pb.QueryMomentResp{
-		Moments: moments,
+		Moments: respMoments,
 	}, nil
 }
