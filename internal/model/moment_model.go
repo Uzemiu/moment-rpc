@@ -80,16 +80,25 @@ func (m *customMomentModel) UpdateMomentByIdAndUserId(ctx context.Context, data 
 		}
 		filter["userId"] = uid
 	}
+	cid := primitive.ObjectID{}
+	set := bson.M{
+		"title":    data.Title,
+		"text":     data.Text,
+		"photos":   data.ImageUrls,
+		"catId":    cid,
+		"updateAt": time.Now(),
+	}
+	if data.CatId != "" {
+		cid, err = primitive.ObjectIDFromHex(data.CatId)
+		if err != nil {
+			return ErrInvalidObjectId
+		}
+		set["catId"] = cid
+	}
 
 	// 更新数据
 	update := bson.M{
-		"$set": bson.M{
-			"title":    data.Title,
-			"text":     data.Text,
-			"photos":   data.ImageUrls,
-			"catId":    data.CatId,
-			"updateAt": time.Now(),
-		},
+		"$set": set,
 	}
 
 	option := options.UpdateOptions{}
