@@ -2,7 +2,7 @@ package model
 
 import (
 	"context"
-	"github.com/xh-polaris/moment-rpc/pb"
+	"github.com/Uzemiu/moment-rpc/pb"
 	"github.com/zeromicro/go-zero/core/stores/cache"
 	"github.com/zeromicro/go-zero/core/stores/monc"
 	"go.mongodb.org/mongo-driver/bson"

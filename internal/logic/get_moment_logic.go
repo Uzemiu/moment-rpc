@@ -2,10 +2,10 @@ package logic
 
 import (
 	"context"
-	"github.com/xh-polaris/moment-rpc/internal/model"
+	"github.com/Uzemiu/moment-rpc/internal/model"
 
-	"github.com/xh-polaris/moment-rpc/internal/svc"
-	"github.com/xh-polaris/moment-rpc/pb"
+	"github.com/Uzemiu/moment-rpc/internal/svc"
+	"github.com/Uzemiu/moment-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )

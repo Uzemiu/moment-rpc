@@ -4,10 +4,10 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/xh-polaris/moment-rpc/internal/config"
-	"github.com/xh-polaris/moment-rpc/internal/server"
-	"github.com/xh-polaris/moment-rpc/internal/svc"
-	"github.com/xh-polaris/moment-rpc/pb"
+	"github.com/Uzemiu/moment-rpc/internal/config"
+	"github.com/Uzemiu/moment-rpc/internal/server"
+	"github.com/Uzemiu/moment-rpc/internal/svc"
+	"github.com/Uzemiu/moment-rpc/pb"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

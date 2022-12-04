@@ -1,4 +1,4 @@
-module github.com/xh-polaris/moment-rpc
+module github.com/Uzemiu/moment-rpc
 
 go 1.18
 

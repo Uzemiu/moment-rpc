@@ -6,7 +6,7 @@ package momentrpc
 import (
 	"context"
 
-	"github.com/xh-polaris/moment-rpc/pb"
+	"github.com/Uzemiu/moment-rpc/pb"
 
 	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"

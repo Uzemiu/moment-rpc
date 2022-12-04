@@ -1,8 +1,8 @@
 package svc
 
 import (
-	"github.com/xh-polaris/moment-rpc/internal/config"
-	"github.com/xh-polaris/moment-rpc/internal/model"
+	"github.com/Uzemiu/moment-rpc/internal/config"
+	"github.com/Uzemiu/moment-rpc/internal/model"
 	"github.com/zeromicro/go-zero/core/stores/redis"
 )
 
