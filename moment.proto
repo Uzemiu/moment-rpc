@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package moment;
+
+option go_package='./pb';
+
+message Moment {
+  string id = 1;
+  string title = 2;
+  string catId = 3;
+  string text = 4;
+  repeated string imageUrls = 5;
+  string userId = 6;
+  int64 createdAt = 7;
+}
+
+message GetMomentReq {
+  string id = 1;
+}
+
+message GetMomentResp {
+  Moment moment = 1;
+}
+
+message QueryMomentReq {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message QueryMomentResp {
+  repeated Moment moments = 1;
+}
+
+message InsertMomentReq {
+  string title = 1;
+  string catId = 2;
+  string text = 3;
+  repeated string imageUrls = 4;
+  string userId = 5;
+}
+
+message InsertMomentResp {
+  string id = 1;
+}
+
+message UpdateMomentReq {
+  string id = 1;
+  string title = 2;
+  string catId = 3;
+  string text = 4;
+  repeated string imageUrls = 5;
+  // 考虑到一般情况下用户只能更新自己的动态，增加userId字段
+  // 如果userId为空，则更新时不会校验用户id
+  string userId = 6;
+}
+
+message UpdateMomentResp {
+
+}
+
+message DeleteMomentReq {
+  string id = 1;
+  // 考虑到一般情况下用户只能删除自己的动态，增加userId字段
+  // 如果userId为空，则删除时不会校验用户id
+  string userId = 2;
+}
+
+message DeleteMomentResp {
+
+}
+
+service MomentRpc {
+  rpc getMoment(GetMomentReq) returns (GetMomentResp);
+  rpc queryMoment(QueryMomentReq) returns (QueryMomentResp);
+  rpc insertMoment(InsertMomentReq) returns (InsertMomentResp);
+  rpc updateMoment(UpdateMomentReq) returns (UpdateMomentResp);
+  rpc deleteMoment(DeleteMomentReq) returns (DeleteMomentResp);
+
+}
